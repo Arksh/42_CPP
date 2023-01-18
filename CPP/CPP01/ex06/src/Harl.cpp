@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:13:00 by cagonzal          #+#    #+#             */
-/*   Updated: 2022/12/19 16:55:06 by cagonzal         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:53:14 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void Harl::complain (std::string level)
 			(this->*(function[2]))();
 		case 3:
 			(this->*(function[3]))();
-			break;
+			break ;
 		default:
-			std::cout <<"HARL MUMBLES AROUND" << std::endl;
+			std::cout <<"HARL MUMBLES AROUND\n" << std::endl;
 			break;
 	}
 }
