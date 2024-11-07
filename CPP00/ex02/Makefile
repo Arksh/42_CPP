@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2022/12/16 15:52:29 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/11/07 12:36:36 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CURSIVE		=	'\033[3m'
 TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
-NAME		=	test
+NAME		=	testAccount
 CC			=	clang++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra

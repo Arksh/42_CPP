@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2023/01/11 10:28:37 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/11/07 12:39:27 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CURSIVE		=	'\033[3m'
 TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
-NAME		=	clapTrap
+NAME		=	testClapTrap
 CC			=	clang++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra

@@ -6,11 +6,11 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2022/12/16 15:52:49 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/11/07 12:36:10 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= megaphone
+NAME	= testMegaphone
 
 # COLORS #
 GREEN	= '\033[0;32m'
