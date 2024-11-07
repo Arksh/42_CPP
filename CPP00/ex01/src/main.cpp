@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:15:41 by cagonzal          #+#    #+#             */
-/*   Updated: 2023/10/05 13:31:52 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:25:55 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main (void)
 		else if (input == "SEARCH")
 			libro.searchContact(t_max);
 		else if (input == "EXIT")
-			std::cout<<"Clossing ..."<<std::endl;
+			std::cout<<"Closing ..."<<std::endl;
 		else
 			std::cout<<"Options Available are"<<std::endl<<"ADD \\ SEARCH \\ EXIT"<<std::endl;
 	}
