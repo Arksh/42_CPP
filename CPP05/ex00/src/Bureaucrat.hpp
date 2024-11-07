@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:59:54 by cagonzal          #+#    #+#             */
-/*   Updated: 2023/10/20 13:48:23 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:28:26 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ class Bureaucrat
 	private:
 		const std::string name;
 		int grade;
+
+	public:
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -32,7 +35,6 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 
-	public:
 		Bureaucrat				( std::string str, int i );
 		~Bureaucrat				( void );
 		Bureaucrat				( const Bureaucrat & bureu );

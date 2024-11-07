@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:57:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2023/10/20 13:50:28 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:22:59 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main ( void )
 		bureu.decreaseGrade();
 
 	}
-	catch (std::exception & e)
+	catch (Bureaucrat::GradeTooLowException & e)
 	{
 		std::cout<< e.what() <<std::endl;
 	}
@@ -59,7 +59,7 @@ int	main ( void )
 		Bureaucrat bureu("Pedro",1);
 		bureu.increaseGrade();
 	}
-	catch (std::exception & e)
+	catch (Bureaucrat::GradeTooHighException & e)
 	{
 		std::cout<< e.what() <<std::endl;
 	}
