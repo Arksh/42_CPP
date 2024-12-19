@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2023/01/18 13:09:04 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/11/28 13:48:28 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CURSIVE		=	'\033[3m'
 TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
-NAME		=
+NAME		=	testBureaucrat
 CC			=	clang++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra #-Wshadow -Wno-shadow
@@ -37,7 +37,12 @@ SRC_PATH	=	src# Source location
 OBJ_PATH	=	obj# Bin location
 
 # SOURCES #
-SRC			=
+SRC			=	main.cpp \
+				AForm.cpp \
+				Bureaucrat.cpp \
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp
 
 # RULES #
 all: $(NAME)
