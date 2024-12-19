@@ -19,19 +19,15 @@ Ensure you have a C++ compiler installed on your machine. You can use `g++`, whi
 ```bash
 sudo apt-get install g++
 ```
-On Windows, you can use MinGW or install a C++ compiler through Visual Studio. On macOS, you can install Xcode Command Line Tools by running:
-```bash
-xcode-select --install
-```
 
 ## Usage
-Navigate to the project directory and follow the instructions in each exercise or project folder. Each folder contains a `README.md` file with specific instructions on what needs to be implemented. Compile the code using a C++ compiler, such as `g++`, and run the executables. For example, to compile a file named `main.cpp`, you can use the following command:
+Navigate to the project directory and follow the instructions in each exercise or project folder. Each folder contains a `README.md` file with specific instructions on what needs to be implemented. Each exercise has its own `Makefile` to simplify the build process. To compile the code, navigate to the exercise folder and run:
 ```bash
-g++ -o main main.cpp
+make
 ```
-Then, run the executable:
+This will generate the executable as specified in the `Makefile`. To run the executable, use:
 ```bash
-./main
+./<executable_name>
 ```
 Make sure to read the comments and documentation within the code to understand the requirements and objectives of each exercise.
 
