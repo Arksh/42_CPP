@@ -13,7 +13,7 @@ Welcome to the 42_CPP project! This project is part of the 42 Madrid curriculum 
 ## Installation
 To get started with this project, clone the repository to your local machine using the following command:
 ```bash
-git clone https://github.com/yourusername/42_CPP.git
+git clone https://github.com/Arksh/42_CPP.git
 ```
 Ensure you have a C++ compiler installed on your machine. You can use `g++`, which is part of the GNU Compiler Collection (GCC). On Linux, you can install it using your package manager. For example, on Ubuntu, you can run:
 ```bash
