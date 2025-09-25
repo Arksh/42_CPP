@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:57:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/11/28 13:40:13 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:36:38 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@
 
 int main (void)
 { 
-	Bureaucrat	_bureu1("Pedro", 2);
-	Bureaucrat	_bureu2("Sandra", 14);
-	Bureaucrat	_bureu3("Miguel", 33);
-	Bureaucrat	_bureu4("Ana", 53);
-	Bureaucrat	_bureu5("Juan", 148);
+	Bureaucrat	bureu1("Pedro", 2);
+	Bureaucrat	bureu2("Sandra", 14);
+	Bureaucrat	bureu3("Miguel", 33);
+	Bureaucrat	bureu4("Ana", 53);
+	Bureaucrat	bureu5("Juan", 148);
 	
 	std::cout<< std::endl << "- - - - - - - - - - - - - - - - - - "<<std::endl;
 	std::cout<< "- - PresidentialPardonForm test - - "<<std::endl;
 	std::cout<< "- - - - - - - - - - - - - - - - - - "<<std::endl;
 	{	
 		PresidentialPardonForm	form("PresidentialPardon");
-		_bureu3.signForm(form);
-		_bureu2.signForm(form);
-		_bureu2.executeForm(form);
-		_bureu1.executeForm(form);
+		bureu3.signForm(form);
+		bureu2.signForm(form);
+		bureu2.executeForm(form);
+		bureu1.executeForm(form);
 	}
 	std::cout<< std::endl << "- - - - - - - - - - - - - - - - - - "<<std::endl;
 	std::cout<< "- - RobotomyRequestForm test - - "<<std::endl;
 	std::cout<< "- - - - - - - - - - - - - - - - - - "<<std::endl;
 	{	
 		RobotomyRequestForm	form("RobotomyRequest");
-		_bureu5.signForm(form);
-		_bureu4.signForm(form);
-		_bureu4.executeForm(form);
-		_bureu3.executeForm(form);
+		bureu5.signForm(form);
+		bureu4.signForm(form);
+		bureu4.executeForm(form);
+		bureu3.executeForm(form);
 	}
 
 	std::cout<< std::endl << "- - - - - - - - - - - - - - - - - - "<<std::endl;
@@ -50,9 +50,9 @@ int main (void)
 	std::cout<< "- - - - - - - - - - - - - - - - - - "<<std::endl;
 	{	
 		ShrubberyCreationForm	form("ShrubberyCreationForm");
-		_bureu5.signForm(form);
-		_bureu4.signForm(form);
-		_bureu4.executeForm(form);
+		bureu5.signForm(form);
+		bureu4.signForm(form);
+		bureu4.executeForm(form);
 	}
 	return (0);
 }
