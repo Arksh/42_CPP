@@ -80,6 +80,6 @@ void Bureaucrat::decreaseGrade(void)
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat &bureu)
 {
-	os << bureu.getName()<< " - whos grade is "<< bureu.getGrade();
+	os << bureu.getName()<< " - whos grade is now "<< bureu.getGrade();
 	return (os);
 }
