@@ -6,15 +6,14 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:04:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/09/25 09:39:06 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/10/26 11:22:12 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 #include <iostream>
-#include <sstream>
-
+#include <ostream>
 /*
 void leaks(void)
 {
@@ -29,13 +28,11 @@ int main (int argc, char **argv)
     ScalarConverter converter = ScalarConverter();
     
     if (argc != 2)
-    {
         return (std::cerr << "Usage: " << argv[0] << " <literal>" << std::endl, 1);
-    }
-
     try
     {
         type = converter.identify_type(argv[1]);
+		std::cout << "Type identified: " << type << std::endl;
         std::cout << "char: ";
         converter.toChar(argv[1], type);
         std::cout << "int: ";

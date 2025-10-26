@@ -6,18 +6,19 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:00:39 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/07/18 15:01:44 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/10/26 11:36:51 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
-#include <string>
-#include <iostream>
-#include <stdexcept>
-#include <limits>
-#include <cmath>
+# include <iomanip>
+# include <iostream>
+# include <limits>
+# include <stdexcept>
+#include <wchar.h>
+#include <math.h>
 
 // Enum for type identification
 enum LiteralType
