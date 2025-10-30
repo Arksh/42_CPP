@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:12:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/10/26 11:48:46 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/10/30 11:01:59 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ LiteralType ScalarConverter::identify_type(const std::string &str)
 	double d_value;
 	float f_value;
 
+	// 1. CHAR_TYPE
 	if (str.length() == 1 && !!isascii(str[0]) && !!std::isdigit(str[0]))
 		return CHAR_TYPE;
 
+	// 2. PSEUDO_TYPE
 	if (!str.compare("nan") || !str.compare("inf") || !str.compare("+inf") || !str.compare("-inf"))
 		return PSEUDO_TYPE;
 	else if (!str.compare("nanf") || !str.compare("inff") || !str.compare("+inff") || !str.compare("-inff"))
 		return PSEUDO_TYPE;
 	
+	// 3. FLOAT_TYPE
 	if(str[str.length()- 1] == 'f' && str.length() > 1)
 	{
 		try
@@ -93,7 +96,6 @@ void ScalarConverter::toInteger(const std::string &str, LiteralType type_input)
 	try
 	{
 		long n = atoi(str.c_str());
-		std::cout << n << std::endl;
 		if (n > std::numeric_limits<int>::max() || n < std::numeric_limits<int>::min())
 		{
 			std::cout << "impossible" << std::endl;
@@ -116,14 +118,14 @@ void ScalarConverter::toFloat(const std::string &str, LiteralType type_input)
 	}
 	try
 	{
-		float f = static_cast<float>(strtod(str.c_str(), NULL));
-		if ((f > std::numeric_limits<float>::max() || f < -std::numeric_limits<float>::max()) && type_input != PSEUDO_TYPE)
+		float f = atof(str.c_str());
+		if ((f > std::numeric_limits<float>::max() || f <= -std::numeric_limits<float>::max()) && type_input != PSEUDO_TYPE)
 		{
 			std::cout << "impossible" << std::endl;
 			return;
 		}
 		std::cout << f;
-		if (type_input == INT_TYPE || type_input == CHAR_TYPE)
+		if (type_input == INT_TYPE || type_input == CHAR_TYPE || f == floor(f))
 			std::cout << ".0";
 		std::cout << "f" << std::endl;
 	}
@@ -133,34 +135,6 @@ void ScalarConverter::toFloat(const std::string &str, LiteralType type_input)
 	}
 }
 
-/**
- * Convert the textual representation in `str` to a double and print the result to std::cout.
- *
- * Behavior:
- * - If `type_input` is ERROR_TYPE, the function prints "impossible" and returns immediately.
- * - The function attempts to parse `str` using strtod and casts the result to double.
- * - If parsing succeeds, the function checks whether the parsed value is representable
- *   as a double. If the value is outside the range representable by std::numeric_limits<double>
- *   and `type_input` is not PSEUDO_TYPE, the function prints "impossible" and returns.
- * - On successful conversion and range check, the function writes the numeric value to std::cout.
- *   If `type_input` indicates the original literal was an integer or a character (INT_TYPE or CHAR_TYPE),
- *   the function appends ".0" to force a visible decimal point for whole numbers.
- * - If an exception of type std::exception (or a subclass) is thrown during conversion handling,
- *   the function catches it and prints "impossible".
- *
- * Side effects:
- * - Writes output to std::cout (either the converted double or the string "impossible").
- *
- * Parameters:
- * - str: the input string containing the literal to convert to double.
- * - type_input: the detected literal type (e.g., ERROR_TYPE, PSEUDO_TYPE, INT_TYPE, CHAR_TYPE, etc.).
- *
- * Notes:
- * - Pseudo-literals (e.g., "nan", "+inf", "-inf") are treated as PSEUDO_TYPE; for these values
- *   the range check against numeric_limits<double> is skipped.
- * - The function does not return a value; results are communicated only via std::cout.
- * - Parsing uses the C library strtod; behavior is subject to the current C locale and strtod semantics.
- */
 void ScalarConverter::toDouble(const std::string &str, LiteralType type_input)
 {
 	if (type_input == ERROR_TYPE)
@@ -177,7 +151,7 @@ void ScalarConverter::toDouble(const std::string &str, LiteralType type_input)
 			return;
 		}
 		std::cout << d;
-		if (type_input == INT_TYPE || type_input == CHAR_TYPE)
+		if (type_input == INT_TYPE || type_input == CHAR_TYPE || d == floor(d))
 			std::cout << ".0";
 		std::cout << std::endl;
 	}
