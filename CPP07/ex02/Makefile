@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2025/01/17 11:03:08 by cagonzal         ###   ########.fr        #
+#    Updated: 2025/10/31 11:24:51 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CURSIVE		=	'\033[3m'
 TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
-NAME		=	
+NAME		=	ArrayTest
 CC			=	clang++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra #-Wshadow -Wno-shadow
@@ -74,3 +74,5 @@ fclean: clean
 re: fclean all
 
 PHONY.: all clean fclean re norminette
+
+# valgrind --leak-check=full ./ArrayTest
