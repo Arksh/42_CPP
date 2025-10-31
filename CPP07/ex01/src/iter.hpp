@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 14:58:10 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/10/30 15:38:35 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/10/31 09:41:58 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,25 @@ std::ostream &operator<< (std::ostream& os, Tester const &t)
 }
 
 template< typename T >
-void print( T &x )
+void print(T &x)
 {
     std::cout << x << std::endl;
 }
 
 template< typename T >
-void increment( T &x )
+void increment(T &x)
 {
     x++;
 }
 
 template< typename T >
-void decrement( T &x )
+void decrement(T &x)
 {
     x--;
 }
 
 template< typename T >
-void append_a_char( T &x )
+void append_a_char(T &x)
 {
     x.append("a");
 }
