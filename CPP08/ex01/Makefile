@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2025/10/31 18:40:17 by cagonzal         ###   ########.fr        #
+#    Updated: 2025/11/01 10:55:21 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_PATH	=	src# Source location
 OBJ_PATH	=	obj# Bin location
 
 # SOURCES #
-SRC			=	main.cpp
+SRC			=	main.cpp Span.cpp
 
 # RULES #
 all: $(NAME)

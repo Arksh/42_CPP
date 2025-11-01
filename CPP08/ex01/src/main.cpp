@@ -6,14 +6,16 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 18:12:11 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/10/31 18:41:37 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/11/01 11:55:18 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Span.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Span.hpp"
+
+#define DEBUG_PRINT() std::cout << "(in file: " << __FILE__ << ", line: " << __LINE__ << ")" << std::endl;
 
 int main()
 {
@@ -71,8 +73,8 @@ int main()
 
 		try 
 		{
-			std::cout << "Shortest span (2 elements): " << sp_two.shortestSpan() << std::endl;
-			std::cout << "Longest span (2 elements): " << sp_two.longestSpan() << std::endl;
+			std::cout << "Shortest span (2 elements): " << sp_two.shortestSpan() << std::endl; // debe ser 10
+			std::cout << "Longest span (2 elements): " << sp_two.longestSpan() << std::endl; // debe ser 10
 		}
 		catch (const std::exception& e)
 		{
@@ -92,8 +94,8 @@ int main()
 		
 		try
 		{
-			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-			std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl; // debe ser 0 (3 y 3)
+			std::cout << "Longest span: " << sp.longestSpan() << std::endl;  // debe ser 17 (20 - 3)
 		}
 		catch (const std::exception& e)
 		{
@@ -112,10 +114,10 @@ int main()
 		values.reserve(N);
 
 		for (unsigned int i = 0; i < N; ++i)
-			values.push_back(std::rand() % 100000);
-		
-		sp.addNumbers(values.begin(), values.end());		
+			values.push_back(i);
 
+		sp.addNumbers(values.begin(), values.end());
+		
 		try
 		{
 			std::cout << "Shortest span (large): " << sp.shortestSpan() << std::endl; // debe ser 1
