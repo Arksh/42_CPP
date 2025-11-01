@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 18:12:11 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/01 11:55:18 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/11/01 12:47:19 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int main()
 
 		try 
 		{
-			std::cout << "Shortest span (2 elements): " << sp_two.shortestSpan() << std::endl; // debe ser 10
-			std::cout << "Longest span (2 elements): " << sp_two.longestSpan() << std::endl; // debe ser 10
+			std::cout << "Shortest span (2 elements): " << sp_two.shortestSpan() << std::endl; 	// debe ser 10
+			std::cout << "Longest span (2 elements): " << sp_two.longestSpan() << std::endl; 	// debe ser 10
 		}
 		catch (const std::exception& e)
 		{
@@ -94,8 +94,8 @@ int main()
 		
 		try
 		{
-			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl; // debe ser 0 (3 y 3)
-			std::cout << "Longest span: " << sp.longestSpan() << std::endl;  // debe ser 17 (20 - 3)
+			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl; 	// debe ser 0 (3 y 3)
+			std::cout << "Longest span: " << sp.longestSpan() << std::endl;  	// debe ser 17 (20 - 3)
 		}
 		catch (const std::exception& e)
 		{
