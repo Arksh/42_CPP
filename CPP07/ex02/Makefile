@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2025/10/31 11:24:51 by cagonzal         ###   ########.fr        #
+#    Updated: 2025/11/13 11:59:58 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
 NAME		=	ArrayTest
-CC			=	clang++
+CC			=	c++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra #-Wshadow -Wno-shadow
 

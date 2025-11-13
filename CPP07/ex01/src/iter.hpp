@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 14:58:10 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/10/31 09:41:58 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:29:31 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::ostream &operator<< (std::ostream& os, Tester const &t)
 }
 
 template< typename T >
-void print(T &x)
+void print(const T &x)
 {
     std::cout << x << std::endl;
 }
@@ -58,10 +58,18 @@ void append_a_char(T &x)
 }
 
 template< typename T >
-void iter (T *array, unsigned int length, void (*f)(T &param))
+void iter (T *array, const unsigned int length, void (*f)(T&))
 {
     for (unsigned int i = 0; i < length; i++)
         f(array[i]);
 }
+
+template< typename T>
+void iter (T *array, const unsigned int length, void (*f) (const T&))
+{
+    for (unsigned int i = 0; i < length; i++)
+        f(array[i]);
+}
+
 
 #endif

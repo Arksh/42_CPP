@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2025/11/01 10:55:21 by cagonzal         ###   ########.fr        #
+#    Updated: 2025/11/13 12:36:36 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
 NAME		=	SpanTest
-CC			=	clang++
+CC			=	c++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra #-Wshadow -Wno-shadow
 
