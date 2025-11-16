@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 18:06:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/01 10:54:34 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:54:50 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ class Span
 		Span &operator=(const Span &other);
 		~Span() {}
 
-		void	addNumber(int number);
-		int		shortestSpan() const;
-		int		longestSpan() const;
 
 		template <typename Iterator>
 		void addNumbers(Iterator begin, Iterator end)
@@ -60,6 +57,10 @@ class Span
 				throw FullSpanException();
 			_numbers.insert(_numbers.end(), begin, end);
 		}
+		
+		void	addNumber(int number);
+		int		shortestSpan() const;
+		int		longestSpan() const;
 		
 };
 

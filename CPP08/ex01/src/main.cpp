@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 18:12:11 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/01 12:47:19 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:33:41 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int main()
 		sp.addNumber(3);
 		sp.addNumber(20);
 		sp.addNumber(7);
-		sp.addNumber(3);  // duplicado
+		sp.addNumber(3);
 		
 		try
 		{
