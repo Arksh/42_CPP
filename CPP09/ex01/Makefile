@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:13:17 by cagonzal          #+#    #+#              #
-#    Updated: 2025/11/13 12:37:08 by cagonzal         ###   ########.fr        #
+#    Updated: 2025/11/28 21:09:55 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CURSIVE		=	'\033[3m'
 TITLE		=	'\033[38;5;33m'
 
 # VARIABLES #
-NAME		=	
+NAME		=	RPN
 CC			=	c++
 INCLUDE		=	-std=c++98
 CFLAGS		=	-Wall -Werror -Wextra #-Wshadow -Wno-shadow
@@ -37,7 +37,7 @@ SRC_PATH	=	src# Source location
 OBJ_PATH	=	obj# Bin location
 
 # SOURCES #
-SRC			=	main.cpp
+SRC			=	main.cpp RPN.cpp
 
 # RULES #
 all: $(NAME)
