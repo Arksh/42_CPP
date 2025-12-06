@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:33:22 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/12/06 13:37:31 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/06 14:06:30 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ T					merge_sort(T &list)
 	{
 		size_t pos = 0;
 		while (pos < greater.size() && greater[pos] < aux)
-		++pos;
+			++pos;
 		greater.insert(greater.begin() + pos, aux);
 	}
 	
