@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 19:18:05 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/12/03 11:35:57 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/06 12:58:48 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,10 @@ std::string		RPN::get_answer		(void)
             x = getIntNumber(*it_aux);
             aux.pop_back();
             
+			// std::cout << "Applying operator: "  " on " << x << *it << y << std::endl;
             switch (getOperator(*it))
             {
-                case 0:
+				case 0:
                     aux.push_back(intToString(x + y));  // Replace std::to_string with custom function
                     break;
                 case 1:
@@ -148,14 +149,17 @@ std::string		RPN::get_answer		(void)
                     aux.push_back(intToString(x * y));  // Replace std::to_string with custom function
                     break;
                 case 3:
-                    if (y == 0)
-                        throw RPN::ErrorRPN();
+					if (y == 0)
+						throw RPN::ErrorRPN();
                     aux.push_back(intToString(x / y));  // Replace std::to_string with custom function
                     break;
                 default:
                     throw RPN::ErrorRPN();
                 break;
             }
+			std::cout << "Current stack: ";
+			show_operation(aux);
+			std::cout << std::endl;
         }
     }
     

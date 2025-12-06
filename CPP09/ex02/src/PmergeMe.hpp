@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:33:22 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/12/05 15:48:19 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:37:31 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@
 #include <ctime>
 
 //Check strings
+std::string intToString(int value);
 std::string	get_input(int argc, char **argv);
 bool		isIntNumber(std::string str);
 
 //Check data integrity
-bool		input_on_list(const std::vector<int> &vec, const std::deque<int> &deq);
+bool		check_duplicates(std::vector<int> &vec, std::deque<int> &deq);
 bool		check_input(const std::string &input, char del);
 
 
@@ -33,12 +34,13 @@ bool		check_input(const std::string &input, char del);
 template <typename T>
 std::string	show_array(T list)
 {
-	std::string	aux = "";
-	std::stringstream ss;
-
+	std::string	aux;
+	
+	// aux += "[ ";
 	for (int x = 0; x < (int)list.size();x++)
-		ss << list[x] << " ";
-	ss >> aux;
+		aux += intToString(list[x]) + " ";
+	// aux += "]";
+	
 	return (aux);
 }
 
@@ -50,50 +52,68 @@ T					extract_data(const std::string &input, char del)
 	std::stringstream ss(input);
 	std::string item;
 	
-	// Phase 1: split the input string by the delimiter
 	while (std::getline(ss, item, del))
-	// Phase 2: convert each substring to an integer and insert each integer into the container T	
 		if (isIntNumber(item) && item != "")
 			aux.push_back(atoi(item.c_str()));
-
-	std::cout << show_array(aux) << std::endl;
 	return aux;
 }
 
 //Template to sort
 template <typename T>
-/**
- * @brief Sorts a list using bubble sort algorithm.
- * 
- * @details Performs a simple bubble sort on the provided list by repeatedly
- *          comparing adjacent elements and swapping them if they are in the
- *          wrong order. The algorithm continues until the entire list is sorted.
- * 
- * @tparam T The type of the list container (must support operator[], size(), and comparison operators).
- * 
- * @param list Reference to the list to be sorted. The list is modified in-place.
- * 
- * @return T The sorted list (same reference as input parameter).
- * 
- * @note This implementation has O(n²) time complexity in the average and worst cases.
- *       It is not recommended for large datasets due to poor performance.
- * 
- * @warning The function assumes the list contains comparable elements that support
- *          the greater-than operator (>).
- */
-T					sort(T &list)
+T					merge_sort(T &list)
 {
-	int		aux;
+	T greater;
+	T lesser;
+	int	aux;
+	bool hasAux = false;
 	
-	for (int x = 0;x < (int)list.size() - 1; x++)
+	if (list.size() <= 1)
+		return (list);
+	
+	// recorre de 2 en 2
+	for (size_t i = 0; i < list.size(); i += 2)
 	{
-		if (list[x] > list[x + 1])
+		if (i + 1 < list.size())
 		{
-			aux = list[x];
-			list[x] = list[x + 1];
-			list[x + 1] = aux;
-			x = -1;
+			if (list[i] > list[i + 1])
+			{
+				greater.push_back(list[i]);
+				lesser.push_back(list[i + 1]);
+			}
+			else
+			{
+				greater.push_back(list[i + 1]);
+				lesser.push_back(list[i]);
+			}
+		}
+		else
+		{
+			aux = list[i];
+			hasAux = true;
 		}
 	}
-	return (list);	
+	greater = merge_sort<T>(greater);
+	lesser = merge_sort<T>(lesser);
+
+	for (size_t i = 0; i < lesser.size(); ++i)
+	{
+		size_t pos = 0;
+		while (pos < greater.size() && greater[pos] < lesser[i])
+			++pos;
+		greater.insert(greater.begin() + pos, lesser[i]);
+	}
+	
+	if (hasAux)
+	{
+		size_t pos = 0;
+		while (pos < greater.size() && greater[pos] < aux)
+		++pos;
+		greater.insert(greater.begin() + pos, aux);
+	}
+	
+	// std::cout << "Greater: " << show_array(greater) << std::endl;
+	// std::cout << "Lesser: " << show_array(lesser) << std::endl;
+	// std::cout << "Aux: " << aux << std::endl;
+	
+	return (greater);	
 }
