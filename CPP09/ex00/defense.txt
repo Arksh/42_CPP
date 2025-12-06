@@ -1,0 +1,135 @@
+=== CPP09 - Exercise 00: Bitcoin Exchange - Defense Script ===
+
+INTRODUCCIÓN:
+"Este ejercicio implementa un calculador de precios de Bitcoin que lee tasas de cambio
+históricas desde una base de datos CSV y calcula el valor de cantidades de Bitcoin en fechas específicas."
+
+=== PARTE 1: COMPRENSIÓN CONCEPTUAL ===
+
+P: ¿Qué se supone que hace este programa?
+R: Lee las tasas de cambio de Bitcoin desde data.csv y evalúa consultas de
+	un archivo, calculando el valor de cantidades de Bitcoin en fechas específicas usando
+	la tasa histórica disponible más cercana.
+
+P: ¿Qué contenedores usaste y por qué?
+R: Usé std::map<std::time_t, double> para almacenar las tasas de cambio.
+	- Map ofrece tiempo de búsqueda O(log n) con lower_bound
+	- Mantiene automáticamente el orden cronológico por claves de timestamp UNIX
+	- Es ideal para encontrar fechas previas más cercanas de forma eficiente
+
+P: ¿Por qué no usar vector o list?
+R: Los vectores requerirían tiempo de búsqueda O(n). Las listas son incluso peores.
+	La estructura ordenada del map y su búsqueda logarítmica lo hacen ideal para búsquedas por fecha.
+
+=== PARTE 2: RECORRIDO DEL CÓDIGO ===
+
+COMPONENTES CLAVE:
+
+1. Constructor BitcoinExchange:
+	- Analiza línea de entrada con delimitador (coma para CSV, tubería para entrada)
+	- Divide en fecha y valor usando stringstream
+	- Valida formato (debe tener exactamente 2 segmentos)
+	- Almacena entrada original y timestamp UNIX
+
+2. Análisis de Fecha (set_date):
+	- Valida formato YYYY-MM-DD
+	- Verifica rangos: año > 1900, mes 1-12, día 1-31
+	- Convierte a timestamp UNIX usando mktime para comparación fácil
+
+3. Validación de Valor (set_bit_value):
+	- Bandera arch_type distingue base de datos (0) vs entrada (1)
+	- Valores de entrada: deben estar en [0, 1000]
+	- Valores de base de datos: solo deben ser no-negativos
+	- Usa strtod para conversión de string a double
+
+4. Búsqueda de Tasa (find_closest_rate):
+	- Usa lower_bound para encontrar fecha >= fecha consultada
+	- Si coincidencia exacta: devuelve esa tasa
+	- Si anterior a primera entrada: usa primera tasa
+	- De lo contrario: devuelve tasa anterior (fecha más cercana anterior)
+
+5. Error Handling:
+   - No exceptions used (C++98 style)
+   - _error_detected string stores error messages
+   - Errors checked before calculations
+
+=== PARTE 3: DEMOSTRACIÓN ===
+
+COMPILAR Y EJECUTAR:
+"make re && ./btc input.txt"
+
+EJEMPLOS DE SALIDA ESPERADA:
+- Consulta válida: "2011-01-03 => 3 = 0.9"
+- Casos de error:
+	* "Error: bad input => 2011-13-03 | 1" (mes inválido)
+	* "Error: not a positive number." (valor negativo)
+	* "Error: too large a number." (> 1000)
+
+CASOS DE PRUEBA EXTREMOS:
+1. Fecha anterior al inicio de la base de datos
+2. Fecha posterior al final de la base de datos
+3. Coincidencia exacta de fecha vs interpolación
+4. Formatos y valores inválidos
+
+=== PARTE 4: PREGUNTAS AVANZADAS ===
+
+P: ¿Qué sucede si dos fechas tienen el mismo timestamp unix?
+R: std::map mantiene solo una entrada por clave. Sin embargo, las fechas tienen
+	 granularidad de día, y mktime se resuelve a un timestamp específico, por lo que
+	 esto no debería ocurrir con entrada correcta.
+
+P: ¿Cómo funciona lower_bound?
+R: Devuelve iterador al primer elemento NO MENOR que la clave. Si la clave existe,
+	 la devuelve. Si no, devuelve el siguiente elemento más alto. Esto nos permite
+	 encontrar una fecha exacta o posterior de forma eficiente.
+
+P: ¿Por qué eliminar espacios en blanco?
+R: La entrada puede tener variaciones de espaciado: "2011-01-03 | 3" vs "2011-01-03|3"
+	 Trimming asegura análisis consistente independientemente del espaciado.
+
+P: ¿Para qué sirve el parámetro arch_type?
+R: Diferencia reglas de validación:
+	 - Entradas de base de datos (arch_type=0): cualquier valor no-negativo permitido
+	 - Entrada de usuario (arch_type=1): aplicación estricta de rango [0, 1000]
+
+P: ¿Cómo manejas años bisiestos y longitudes de meses?
+R: mktime() maneja aritmética de calendario automáticamente. Normaliza fechas inválidas
+	 (por ejemplo, Feb 30 se convierte en Mar 2). La validación básica verifica rangos razonables.
+
+=== PARTE 5: MEJORAS POTENCIALES ===
+
+Si no estuviera restringido a C++98:
+- Usar std::stod en lugar de strtod
+- Usar C++11 chrono para mejor manejo de fechas
+- Usar unique_ptr para gestión de memoria
+- Usar literales de cadena y to_string para conversiones
+- Manejo de excepciones en lugar de cadenas de error
+
+=== PARTE 6: ERRORES COMUNES A MENCIONAR ===
+
+1. Peculiaridades de la estructura tm:
+	 - tm_year es años desde 1900
+	 - tm_mon es 0-11, no 1-12
+	 - Debe ajustarse al analizar y mostrar
+
+2. Manejo de archivos:
+	 - C++98 requiere .c_str() para constructor de ifstream
+	 - Debe saltarse la línea de encabezado en CSV
+	 - Verificar file.is_open() antes de leer
+
+3. Tokenización de cadenas:
+	 - getline con delimitador no elimina el delimitador del flujo
+	 - Cadenas vacías cuentan como segmentos válidos
+
+4. Seguridad de iterador de map:
+	 - Verificar iterador != end() antes de desreferenciar
+	 - lower_bound puede devolver begin() o end()
+
+=== CONSEJOS RÁPIDOS PARA LA DEFENSA ===
+
+- Explica POR QUÉ elegiste cada contenedor/algoritmo
+- Demuestra comprensión de complejidad temporal
+- Muestra que probaste casos extremos
+- Conoce limitaciones de C++98 y soluciones alternativas
+- Esté listo para modificar código sobre la marcha
+- Entiende cada línea de código que escribiste

@@ -4,3 +4,6 @@
 # Ignore all files starting with 'test'
 **/test*
 **/intern*
+
+# Ignore specific text files
+# defense.txt

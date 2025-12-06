@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:04:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/28 19:14:05 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:59:33 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,8 @@ std::map <int , BitcoinExchange>	read_file(std::string dir, char del, std::map <
     if (file.is_open())
     {
         if (std::getline(file,line))  // Add std:: prefix
-        {
             while (std::getline(file,line))  // Add std:: prefix
-            {
-                list.insert(std::make_pair(i , BitcoinExchange(line, del, arch_type)));
-                i++;
-            }
-        }
+                list.insert(std::make_pair(i++ , BitcoinExchange(line, del, arch_type)));
         else
             std::cout << "Error : Empty file"<< std::endl;
     }
@@ -77,9 +72,7 @@ int main (int argc, char **argv)
     std::map <int , BitcoinExchange>	list;
 
     if (argc == 1 || argc > 2)
-    {
         std::cout<< "Just one arg as input is mandatory" << std::endl;
-    }
     else
     {
         csv  = read_file(CSV, ',', csv, 0);

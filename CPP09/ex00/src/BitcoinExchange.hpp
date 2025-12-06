@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:59:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/28 21:30:16 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/05 13:20:04 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 # include <map>
 # include <fstream>
 
+/**
+ * @class BitcoinExchange
+ * @brief A class for managing Bitcoin exchange rates and calculating Bitcoin values based on dates.
+ * 
+ * This class handles the storage and retrieval of historical Bitcoin exchange rates from a database file.
+ * It allows parsing of dates and Bitcoin amounts, finding the closest exchange rate for a given date,
+ * and calculating the value of a Bitcoin amount based on historical rates.
+ * 
+ * @note The class uses std::map to store exchange rates indexed by Unix timestamps for efficient
+ *       lookup of historical rates.
+ */
 class	BitcoinExchange {
 
     private:

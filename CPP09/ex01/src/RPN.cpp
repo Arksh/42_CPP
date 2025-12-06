@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 19:18:05 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/11/29 17:18:48 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:35:57 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool RPN::isIntNumber(std::string str)
         return false;
     if (x < std::numeric_limits<int>::min() || x > std::numeric_limits<int>::max())
         return false;
-    if (std::fmod(x, 1.0) != 0)
+    if (std::fmod(x, 1.0) != 0) // is not an integer
         return false;
     if (x > 10) // || x < 0)
         return false;
@@ -82,9 +82,7 @@ bool RPN::check_input (void)
 {
     for (iterator it = this->list.begin(); it != this->list.end(); ++it)
     {
-        if (isIntNumber(*it) || isOperator(*it))
-            continue;
-        else
+        if (!(isIntNumber(*it) || isOperator(*it)))
             return false;
     }
     return true;
