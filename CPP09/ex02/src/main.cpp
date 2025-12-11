@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:33:37 by cagonzal          #+#    #+#             */
-/*   Updated: 2025/12/06 14:17:38 by cagonzal         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:38:15 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int main (int argc, char **argv)
 
 			t1 = clock();
 			t2 = clock();
-			// std::cout << "Vector before: \t" << show_array(_test1) << std::endl;
+			std::cout << "Vector before: \t" << show_array(_test1) << std::endl;
 			_test1 = merge_sort<std::vector<int> >(_test1);
-			// std::cout << "Vector after: \t" << show_array(_test1) << std::endl;
+			std::cout << "Vector after: \t" << show_array(_test1) << std::endl;
 			elapsed_us = static_cast<double>(t2 - t1) * 1000000.0 / CLOCKS_PER_SEC;
 			elapsed_s  = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
 			std::cout << "Time to process a range of " << _test1.size()
@@ -52,9 +52,9 @@ int main (int argc, char **argv)
 			<< elapsed_s  << " s"
 			<< std::endl;
 			t1 = clock();
-			// std::cout << "Deque before: \t" << show_array(_test2) << std::endl;
+			std::cout << "Deque before: \t" << show_array(_test2) << std::endl;
 			_test2 = merge_sort<std::deque<int> >(_test2);
-			// std::cout << "Deque after: \t" << show_array(_test2) << std::endl;
+			std::cout << "Deque after: \t" << show_array(_test2) << std::endl;
 			t2 = clock();
 			elapsed_us = static_cast<double>(t2 - t1) * 1000000.0 / CLOCKS_PER_SEC;
 			elapsed_s  = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
